@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProductTableViewCell" rowHeight="183" id="KGk-i7-Jjw" customClass="ProductTableViewCell" customModule="MobileTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="183"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="182.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6C-IS-5iu">
+                        <rect key="frame" x="8" y="7" width="306" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rk3-0d-uC1">
+                        <rect key="frame" x="7" y="33" width="306" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ic-dp-yx1">
+                        <rect key="frame" x="8" y="59" width="306" height="115.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="W6C-IS-5iu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="5x0-Lu-0VD"/>
+                    <constraint firstItem="rk3-0d-uC1" firstAttribute="top" secondItem="W6C-IS-5iu" secondAttribute="bottom" constant="5" id="8DU-um-gtQ"/>
+                    <constraint firstAttribute="bottom" secondItem="0Ic-dp-yx1" secondAttribute="bottom" constant="8" id="GXX-Pk-qcV"/>
+                    <constraint firstItem="0Ic-dp-yx1" firstAttribute="top" secondItem="rk3-0d-uC1" secondAttribute="bottom" constant="7" id="Gyy-XF-DAy"/>
+                    <constraint firstAttribute="trailing" secondItem="rk3-0d-uC1" secondAttribute="trailing" constant="7" id="HfL-be-jij"/>
+                    <constraint firstItem="0Ic-dp-yx1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="eGM-M2-PKE"/>
+                    <constraint firstItem="W6C-IS-5iu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="hzG-7f-eny"/>
+                    <constraint firstItem="rk3-0d-uC1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="vNZ-z5-gRL"/>
+                    <constraint firstAttribute="trailing" secondItem="0Ic-dp-yx1" secondAttribute="trailing" constant="6" id="w4R-bU-t5w"/>
+                    <constraint firstAttribute="trailing" secondItem="W6C-IS-5iu" secondAttribute="trailing" constant="6" id="yr8-tL-0yT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ibBrandName" destination="rk3-0d-uC1" id="ILE-i5-LnZ"/>
+                <outlet property="ibProductName" destination="W6C-IS-5iu" id="fEJ-RF-nGV"/>
+                <outlet property="ibProductReview" destination="0Ic-dp-yx1" id="g89-By-gPP"/>
+            </connections>
+            <point key="canvasLocation" x="354" y="255.5"/>
+        </tableViewCell>
+    </objects>
+</document>
