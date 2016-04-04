@@ -21,4 +21,6 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "UIToolbar+Utils.h"
 
+#import <HCSStarRatingView/HCSStarRatingView.h>
+
 #endif /* MobileTest_Bridging_Header_h */

@@ -8,7 +8,8 @@
 
 import UIKit
 import AVFoundation
-import Cosmos
+import KMPlaceholderTextView
+import HCSStarRatingView
 
 class AddReviewViewController: UIViewController,
     UITextFieldDelegate,
@@ -18,10 +19,13 @@ class AddReviewViewController: UIViewController,
 {
     
     @IBOutlet weak var ibProductID: UITextField!
-    @IBOutlet weak var ibComment: UITextField!
+    @IBOutlet weak var ibEmail: UITextField!
+    @IBOutlet weak var ibCommentView: KMPlaceholderTextView!
     @IBOutlet weak var ibSaveButton: UIButton!
     @IBOutlet weak var ibListeningButton: UIButton!
-    @IBOutlet weak var cosmosView: CosmosView!
+    @IBOutlet weak var cosmosView: HCSStarRatingView!
+    @IBOutlet weak var ibScanQRButton: UIButton!
+    
     var product: Product?
     
     var productArray = NSMutableArray()
@@ -35,13 +39,17 @@ class AddReviewViewController: UIViewController,
         self.title = "Add Review"
         self.isListening = false
         self.recognizeVoice.delegate = self
-        
+        self.ibCommentView.inputAccessoryView = UIToolbar.keyboardToolbar(self)
+        self.ibProductID.inputAccessoryView = UIToolbar.keyboardToolbar(self)
+        self.ibEmail.inputAccessoryView = UIToolbar.keyboardToolbar(self)
         self.ibProductID.addTarget(self, action: "valueTextChange:", forControlEvents: UIControlEvents.EditingChanged)
         
         enableControls(false)
         //Cosmos Rating View
-        self.cosmosView.settings.fillMode = .Full
-        self.cosmosView.rating = 5
+        self.cosmosView.maximumValue = 10
+        self.cosmosView.minimumValue = 0
+        self.cosmosView.value = 5.0
+        self.cosmosView.allowsHalfStars = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -63,37 +71,69 @@ class AddReviewViewController: UIViewController,
     }
     
     func valueTextChange(textField: UITextField) {
-        print(textField.text)
-        var words = textField.text
+//        print(textField.text)
+//        var words = textField.text
+//        words = words?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+//        if words != nil {
+//            let predicate = NSPredicate(format: "SELF.objectId == %@", words!)
+//            let result = self.productArray.filteredArrayUsingPredicate(predicate) as NSArray
+//            
+//            if (result.count > 0) {
+//                enableControls(true)
+//            }else {
+//                enableControls(false)
+//            }
+//        }
+        let isExistentProductId = checkProductIDIsExist(textField.text) as Bool
+        if (!isExistentProductId) {
+            enableControls(false)
+        }else {
+            enableControls(true)
+        }
+    }
+    
+    func checkProductIDIsExist(productID: String?)->Bool {
+        var words = productID
         words = words?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         if words != nil {
             let predicate = NSPredicate(format: "SELF.objectId == %@", words!)
             let result = self.productArray.filteredArrayUsingPredicate(predicate) as NSArray
             
             if (result.count > 0) {
-                enableControls(true)
+                return true
             }else {
-                enableControls(false)
+                return false
             }
         }
+        return false
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if (textField == self.ibProductID) {
-            var words = textField.text
-            words = words?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            if words != nil {
-                let predicate = NSPredicate(format: "SELF.objectId == %@", words!)
-                let result = self.productArray.filteredArrayUsingPredicate(predicate) as NSArray
-                
-                if (result.count > 0) {
-                    enableControls(true)
-                }else {
-                    enableControls(false)
-                    let alert = UIAlertController(title: "Alert", message: "Product ID not found", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                }
+//            var words = textField.text
+//            words = words?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+//            if words != nil {
+//                let predicate = NSPredicate(format: "SELF.objectId == %@", words!)
+//                let result = self.productArray.filteredArrayUsingPredicate(predicate) as NSArray
+//                
+//                if (result.count > 0) {
+//                    enableControls(true)
+//                }else {
+//                    enableControls(false)
+//                    let alert = UIAlertController(title: "Alert", message: "Product ID not found", preferredStyle: UIAlertControllerStyle.Alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//                    self.presentViewController(alert, animated: true, completion: nil)
+//                }
+//            }
+            let isExistentProductId = checkProductIDIsExist(textField.text) as Bool
+            if (!isExistentProductId) {
+                enableControls(false)
+                let alert = UIAlertController(title: "Alert", message: "Product ID not found", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+
+            }else {
+                enableControls(true)
             }
         }
         self.view.endEditing(true)
@@ -101,8 +141,17 @@ class AddReviewViewController: UIViewController,
     }
     
     func enableControls(state: Bool) {
-        self.ibComment.enabled = state
+        //self.ibCommentView.editable = state
         self.ibSaveButton.enabled = state
+    }
+    
+    func userInteractionEnabled(state: Bool) {
+        self.ibCommentView.userInteractionEnabled = state
+        self.ibEmail.userInteractionEnabled = state
+        self.ibSaveButton.userInteractionEnabled = state
+        self.ibProductID.userInteractionEnabled = state
+        self.cosmosView.userInteractionEnabled = state
+        self.ibScanQRButton.userInteractionEnabled = state
     }
     // CutomScanQRCode Delegate
     func initScanQRCode() {
@@ -114,15 +163,26 @@ class AddReviewViewController: UIViewController,
     func scanFinishedWithValue(value: String?) {
         print(value)
         ibProductID.text = value
+        let isExistentProductId = checkProductIDIsExist(value) as Bool
+        if (!isExistentProductId) {
+            enableControls(false)
+            let alert = UIAlertController(title: "Alert", message: "Product ID not found", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }else {
+            enableControls(true)
+        }
+
     }
     
     @IBAction func addReview(sender: AnyObject) {
-        var comment = self.ibComment.text
+        var comment = self.ibCommentView.text
         if comment == nil {
             comment = ""
         }
 
-        let numRating = NSNumber(double: self.cosmosView.rating)
+        let numRating = NSNumber(integer: Int(self.cosmosView.value))
         
         let param: [String : AnyObject] = [
             "comment":"\(comment)",
@@ -148,8 +208,8 @@ class AddReviewViewController: UIViewController,
                 let userDefault = NSUserDefaults.standardUserDefaults()
                 let aComment = Comment()
                 aComment.objectId = self.ibProductID.text!
-                aComment.comment = self.ibComment.text! + ""
-                aComment.rating = String(self.cosmosView.rating)
+                aComment.comment = self.ibCommentView.text! + ""
+                aComment.rating = String(self.cosmosView.value)
                 aComment.userObjectId = "s1k6Vzf9Uk"
                 self.commentArray.addObject(aComment)
                 userDefault.saveArrayComment(self.commentArray)
@@ -163,15 +223,17 @@ class AddReviewViewController: UIViewController,
             self.isListening = true
             self.ibListeningButton.setTitle("Stop Listening", forState: UIControlState.Normal)
             self.recognizeVoice.beginListening()
+            userInteractionEnabled(false)
         }else {
             self.isListening = false
             self.ibListeningButton.setTitle("Start Listening", forState: UIControlState.Normal)
              self.recognizeVoice.stopListening()
+            userInteractionEnabled(true)
         }
     }
     // CustomRecognize Delegate
     func recognizeFinishedWithValue(hypothesis: String!) {
-        print("A heard: %@", hypothesis)
+        //print("A heard: %@", hypothesis)
         let value: String? = ibProductID.text
         ibProductID.text = value! + hypothesis
     }
@@ -180,7 +242,7 @@ class AddReviewViewController: UIViewController,
         initScanQRCode()
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    func endEditing(sender: AnyObject) {
         self.view.endEditing(true)
     }
 }

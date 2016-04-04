@@ -13,7 +13,8 @@ class ProductViewController: UIViewController,
     UIPickerViewDelegate,
     UITableViewDataSource,
     UITableViewDelegate,
-    UISearchBarDelegate
+    UISearchBarDelegate,
+    UIScrollViewDelegate
 {
     
     @IBOutlet weak var ibNoData: UILabel!
@@ -215,14 +216,7 @@ class ProductViewController: UIViewController,
         return UIView(frame: CGRectMake(0,0,0,0))
     }
     
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return UIView(frame: CGRectMake(0,0,0,0))
-//    }
-//    
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return nil
-//    }
-//    
+    
     //Search Bar Delegate
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if (searchText.characters.count > 0 && self.productFilterArray.count > 0) {
@@ -254,6 +248,11 @@ class ProductViewController: UIViewController,
     
     func endEditing(sender: AnyObject) {
         self.view.endEditing(true)
+    }
+    
+    //UIScrollView Delegate
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        self.ibBrandPicker.hidden = true
     }
     
     

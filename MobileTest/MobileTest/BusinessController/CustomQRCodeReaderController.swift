@@ -15,13 +15,15 @@ class CustomQRCodeReaderController: NSObject, QRCodeReaderViewControllerDelegate
     internal weak var delegate: CustomQRCodeReaderDelegate?
     
     lazy var readerVC = QRCodeReaderViewController(metadataObjectTypes: [AVMetadataObjectTypeQRCode])
-    
+    var stringScanned: String?
     func initScanQRCode() {
         readerVC.delegate = self
         
         readerVC.completionBlock = { (result: QRCodeReaderResult?) in
             if (self.delegate != nil) {
-                self.delegate?.scanFinishedWithValue(result?.value)
+                self.stringScanned = result?.value
+//                self.delegate?.scanFinishedWithValue(result?.value)
+                self.performSelector("passedResultScanQR", withObject: nil, afterDelay: 1.0)
             }
         }
         readerVC.modalPresentationStyle = .FormSheet
@@ -39,6 +41,10 @@ class CustomQRCodeReaderController: NSObject, QRCodeReaderViewControllerDelegate
     func readerDidCancel(reader: QRCodeReaderViewController) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.window?.rootViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    func passedResultScanQR() {
+        self.delegate?.scanFinishedWithValue(self.stringScanned)
     }
 }
 
