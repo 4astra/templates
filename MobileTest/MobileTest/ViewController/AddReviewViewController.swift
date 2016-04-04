@@ -141,16 +141,19 @@ class AddReviewViewController: UIViewController,
     
     func scanFinishedWithValue(value: String?) {
         print(value)
-        ibProductID.text = value
-        let isExistentProductId = checkProductIDIsExist(value) as Bool
-        if (!isExistentProductId) {
-            enableControls(false)
-            let alert = UIAlertController(title: "Alert", message: "Product ID not found", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-        }else {
-            enableControls(true)
+        
+        if(value != nil) {
+            ibProductID.text = value
+            let isExistentProductId = checkProductIDIsExist(value) as Bool
+            if (!isExistentProductId) {
+                enableControls(false)
+                let alert = UIAlertController(title: "Alert", message: "Product ID not found", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            }else {
+                enableControls(true)
+            }
         }
 
     }
