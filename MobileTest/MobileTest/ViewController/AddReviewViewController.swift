@@ -41,8 +41,6 @@ class AddReviewViewController: UIViewController,
         self.isListening = false
         self.recognizeVoice.delegate = self
         self.ibCommentView.inputAccessoryView = UIToolbar.keyboardToolbar(self)
-        self.ibProductID.inputAccessoryView = UIToolbar.keyboardToolbar(self)
-        self.ibEmail.inputAccessoryView = UIToolbar.keyboardToolbar(self)
         self.ibProductID.addTarget(self, action: "valueTextChange:", forControlEvents: UIControlEvents.EditingChanged)
         
         enableControls(false)
