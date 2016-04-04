@@ -10,7 +10,9 @@
 
 **MBProgressHUD** is an iOS drop-in class that displays a translucent HUD with an indicator and/or labels while work is being done in a background thread. The HUD is meant as a replacement for the undocumented, private UIKit UIProgressHUD with some additional features
 
-**Cosmos**, a star rating control for iOS and tvOS
+**HCSStarRatingView** is a UIControl subclass to easily provide users with a basic star rating interface.
+
+**KMPlaceholderTextView** A UITextView subclass that adds support for multiline placeholder written in Swift
 
 ## Requirements
 
