@@ -227,7 +227,7 @@ class ProductViewController: UIViewController,
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if (searchText.characters.count > 0 && self.productFilterArray.count > 0) {
             self.isSearching = true
-            let searchPredicate = NSPredicate(format: "SELF.productName contains %@", searchText)
+            let searchPredicate = NSPredicate(format: "SELF.productName contains[c] %@", searchText)
             let result = self.productFilterArray.filteredArrayUsingPredicate(searchPredicate) as NSArray;
             self.productSearchArray = NSMutableArray(array: result)
         }else {
