@@ -26,7 +26,7 @@ class CustomRecognizeController: NSObject,
     
     func initRecognize() {
 
-        OELogging.startOpenEarsLogging()
+        //OELogging.startOpenEarsLogging()
         OEPocketsphinxController.sharedInstance().verbosePocketSphinx = true
         self.openEarsEventsObserver.delegate = self
         

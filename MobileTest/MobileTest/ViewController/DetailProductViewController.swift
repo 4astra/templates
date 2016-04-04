@@ -22,6 +22,7 @@ class DetailProductViewController: UIViewController,
     var reviewArray: NSArray?
     var reviewFilterArray = NSMutableArray()
     var userArray = NSMutableArray()
+    var productArray = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +54,7 @@ class DetailProductViewController: UIViewController,
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 self.ibCommentTable.reloadData()
             }
-        };
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -84,6 +85,8 @@ class DetailProductViewController: UIViewController,
     func addReview(sender: UIButton!) {
         let addReview = self.storyboard?.instantiateViewControllerWithIdentifier("AddReviewViewController") as! AddReviewViewController
         addReview.product = self.product
+        addReview.productArray = self.productArray
+        addReview.userArray = self.userArray
         self.navigationController?.pushViewController(addReview, animated: true)
     }
     

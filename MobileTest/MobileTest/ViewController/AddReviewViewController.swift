@@ -30,7 +30,8 @@ class AddReviewViewController: UIViewController,
     
     var productArray = NSMutableArray()
     var commentArray = NSMutableArray()
-    
+    var userArray = NSMutableArray()
+    var userObjectID: String = "s1k6Vzf9Uk" //default
     let recognizeVoice = CustomRecognizeController()
     var isListening: Bool?
     
@@ -50,16 +51,24 @@ class AddReviewViewController: UIViewController,
         self.cosmosView.minimumValue = 0
         self.cosmosView.value = 5.0
         self.cosmosView.allowsHalfStars = false
+        
+        self.ibEmail.text = NSUserDefaults.emailLastUsed()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        ProductBusinessController.getAllProduct { (productArray) -> Void in
-            self.productArray = NSMutableArray(array: productArray)
-        }
         let userDefault = NSUserDefaults.standardUserDefaults()
         self.commentArray = NSMutableArray(array: userDefault.arrayComment())
+        
+        if(self.userArray.count <= 0) {
+            allUser()
+        }
+    }
+    
+    func allUser() {
+        UserBussinessController.getAllUser { (userArray) -> Void in
+            self.userArray = NSMutableArray(array: userArray)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -71,19 +80,6 @@ class AddReviewViewController: UIViewController,
     }
     
     func valueTextChange(textField: UITextField) {
-//        print(textField.text)
-//        var words = textField.text
-//        words = words?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-//        if words != nil {
-//            let predicate = NSPredicate(format: "SELF.objectId == %@", words!)
-//            let result = self.productArray.filteredArrayUsingPredicate(predicate) as NSArray
-//            
-//            if (result.count > 0) {
-//                enableControls(true)
-//            }else {
-//                enableControls(false)
-//            }
-//        }
         let isExistentProductId = checkProductIDIsExist(textField.text) as Bool
         if (!isExistentProductId) {
             enableControls(false)
@@ -110,21 +106,6 @@ class AddReviewViewController: UIViewController,
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if (textField == self.ibProductID) {
-//            var words = textField.text
-//            words = words?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-//            if words != nil {
-//                let predicate = NSPredicate(format: "SELF.objectId == %@", words!)
-//                let result = self.productArray.filteredArrayUsingPredicate(predicate) as NSArray
-//                
-//                if (result.count > 0) {
-//                    enableControls(true)
-//                }else {
-//                    enableControls(false)
-//                    let alert = UIAlertController(title: "Alert", message: "Product ID not found", preferredStyle: UIAlertControllerStyle.Alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-//                    self.presentViewController(alert, animated: true, completion: nil)
-//                }
-//            }
             let isExistentProductId = checkProductIDIsExist(textField.text) as Bool
             if (!isExistentProductId) {
                 enableControls(false)
@@ -177,6 +158,15 @@ class AddReviewViewController: UIViewController,
     }
     
     @IBAction func addReview(sender: AnyObject) {
+        
+        let hasEmail: Int = getUserObjectIdFromEmail();
+        if (hasEmail == -1) {
+            let alert = UIAlertController(title: "Alert", message: "Email is not valid", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return;
+        }
+        
         var comment = self.ibCommentView.text
         if comment == nil {
             comment = ""
@@ -195,7 +185,7 @@ class AddReviewViewController: UIViewController,
             "userID": [
                 "__type": "Pointer",
                 "className": "User",
-                "objectId": "s1k6Vzf9Uk"
+                "objectId": "\(userObjectID)"
             ]
         ]
         
@@ -244,5 +234,23 @@ class AddReviewViewController: UIViewController,
     
     func endEditing(sender: AnyObject) {
         self.view.endEditing(true)
+    }
+    
+    func getUserObjectIdFromEmail()->Int {
+        var email:String? = ibEmail.text
+        email = email?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        if (email != "" || email != nil) {
+            let predicate = NSPredicate(format: "SELF.email == %@", email!)
+            let result = self.userArray.filteredArrayUsingPredicate(predicate) as NSArray
+            if result.count > 0 {
+                NSUserDefaults.saveEmailLastUsed(email!)
+                let user = result.firstObject as! User
+                self.userObjectID = user.objectId!
+                return 1
+            }else {
+                return -1
+            }
+        }
+        return 0
     }
 }

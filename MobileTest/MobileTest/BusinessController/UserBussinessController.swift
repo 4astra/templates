@@ -13,6 +13,7 @@ class UserBussinessController: APIManager {
     static func getAllUser(completion: (userArray: NSMutableArray)->Void) {
         APIManager.sharedInstance.methodGET("User", param: nil) { (responseJSON) -> Void in
             if (responseJSON != nil) {
+                //print(responseJSON)
                 let json = JSON(responseJSON!)
                 let result:[JSON] = json["results"].arrayValue
                 let userArray = NSMutableArray()

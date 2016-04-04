@@ -40,7 +40,7 @@ class ProductViewController: UIViewController,
         
         self.isSearching = false
         self.ibProductTable.registerNib(UINib(nibName: "ProductTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductTableViewCell")
-         self.ibProductTable.hidden = true
+        self.ibProductTable.hidden = true
         self.ibProductTable.tableFooterView = UIView()
         self.ibProductTable.tableHeaderView = UIView()
         self.ibSearchBar.inputAccessoryView = UIToolbar.keyboardToolbar(self)
@@ -50,8 +50,6 @@ class ProductViewController: UIViewController,
         allProduct()
         //get all review
         allReview()
-        
-        self.ibProductTable.contentInset = UIEdgeInsetsMake(-1.0, 0.0, 0.0, 0.0)
     }
     
     func initItemsOnNavigationBar() {
@@ -88,6 +86,12 @@ class ProductViewController: UIViewController,
         }
     }
     
+//    func allUser() {
+//        UserBussinessController.getAllUser { (userArray) -> Void in
+//            self.userArray = NSMutableArray(array: userArray)
+//        }
+//    }
+    
     //get a brand name from brandIDSelected
     func getBrandName()->String! {
         let predicate =  NSPredicate(format: "SELF.ID == %@", self.brandIDSelected!)
@@ -102,6 +106,7 @@ class ProductViewController: UIViewController,
     
     func addReview(sender: UIButton!) {
         let addReview = self.storyboard?.instantiateViewControllerWithIdentifier("AddReviewViewController") as! AddReviewViewController
+        addReview.productArray = self.productArray
         self.navigationController?.pushViewController(addReview, animated: true)
     }
     
@@ -121,7 +126,7 @@ class ProductViewController: UIViewController,
     }
     
     /* --------------PickerView Datasource and Delegate --------------------*/
-   
+    
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let brand = self.brandArray[row]
         return brand.name
@@ -152,7 +157,7 @@ class ProductViewController: UIViewController,
             self.ibNoData.hidden = false
             self.ibProductTable.hidden = true
         }
-
+        
     }
     
     /* --------------UITableView Datasource and Delegate --------------------*/
@@ -160,16 +165,17 @@ class ProductViewController: UIViewController,
         return 1
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 95.0
-//    }
+    //    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    //        return 95.0
+    //    }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 195.0
     }
-  
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-         let detailProduct = self.storyboard?.instantiateViewControllerWithIdentifier("DetailProductViewController") as! DetailProductViewController
+        let detailProduct = self.storyboard?.instantiateViewControllerWithIdentifier("DetailProductViewController") as! DetailProductViewController
+        detailProduct.productArray = self.productArray
         var product: Product!;
         if (self.isSearching == true) {
             product = self.productSearchArray[indexPath.row] as! Product

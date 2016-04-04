@@ -50,6 +50,20 @@ extension NSUserDefaults {
             }
         }
         return []
-        //return NSKeyedUnarchiver.unarchiveObjectWithData(data) as! NSArray
+    }
+    
+    static func saveEmailLastUsed(email: String) {
+        let userDefault: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        userDefault.setObject(email, forKey: "kEmailLastUsed")
+        userDefault.synchronize()
+    }
+    
+    static func emailLastUsed()->String {
+        let userDefault: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let email: String? = userDefault.objectForKey("kEmailLastUsed") as? String
+        if (email != nil) {
+            return email!
+        }
+        return ""
     }
 }
