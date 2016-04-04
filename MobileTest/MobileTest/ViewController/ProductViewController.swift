@@ -49,6 +49,8 @@ class ProductViewController: UIViewController,
         allProduct()
         //get all review
         allReview()
+        
+        self.ibProductTable.contentInset = UIEdgeInsetsMake(-1.0, 0.0, 0.0, 0.0)
     }
     
     func initItemsOnNavigationBar() {
@@ -210,9 +212,17 @@ class ProductViewController: UIViewController,
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+        return UIView(frame: CGRectMake(0,0,0,0))
     }
     
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        return UIView(frame: CGRectMake(0,0,0,0))
+//    }
+//    
+//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return nil
+//    }
+//    
     //Search Bar Delegate
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         if (searchText.characters.count > 0 && self.productFilterArray.count > 0) {
