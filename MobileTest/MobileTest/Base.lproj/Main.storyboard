@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LKU-A3-pPR">
-                                <rect key="frame" x="0.0" y="114" width="600" height="486"/>
+                                <rect key="frame" x="0.0" y="158" width="600" height="442"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="8fX-c7-Wyf"/>
@@ -86,14 +86,14 @@
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" placeholder="Search name of Product" translatesAutoresizingMaskIntoConstraints="NO" id="B13-vG-5sO">
-                                <rect key="frame" x="0.0" y="70" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="HJB-Td-dlx"/>
                                 </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvi-2l-9PS">
-                                <rect key="frame" x="256" y="28" width="88" height="30"/>
+                                <rect key="frame" x="256" y="72" width="88" height="30"/>
                                 <state key="normal" title="Select Brand"/>
                                 <connections>
                                     <action selector="showBrandPicker:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AWR-T6-9ep"/>
@@ -145,10 +145,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Product ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ifs-Or-wjl">
-                                <rect key="frame" x="29" y="39" width="397" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="xof-2O-hed"/>
-                                </constraints>
+                                <rect key="frame" x="29" y="39" width="537" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -156,10 +153,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YrZ-h0-nOR">
-                                <rect key="frame" x="29" y="138" width="543" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Zrp-of-qY6"/>
-                                </constraints>
+                                <rect key="frame" x="29" y="167" width="551" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -167,10 +161,10 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IT0-7Z-aRe">
-                                <rect key="frame" x="532" y="183" width="34" height="30"/>
+                                <rect key="frame" x="532" y="231" width="34" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="0pf-oq-eTE"/>
-                                    <constraint firstAttribute="height" constant="30" id="Ghp-4E-NkG"/>
+                                    <constraint firstAttribute="height" constant="30" id="Pfd-TZ-ulL"/>
+                                    <constraint firstAttribute="width" constant="34" id="jov-lO-Erk"/>
                                 </constraints>
                                 <state key="normal" title="Save"/>
                                 <connections>
@@ -178,10 +172,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pak-2R-NYX">
-                                <rect key="frame" x="477" y="38" width="105" height="30"/>
+                                <rect key="frame" x="465" y="87" width="105" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="4mN-kx-7P9"/>
-                                    <constraint firstAttribute="width" constant="105" id="7jp-b8-5Un"/>
+                                    <constraint firstAttribute="height" constant="30" id="PEa-3H-3xK"/>
+                                    <constraint firstAttribute="width" constant="105" id="g6W-TJ-1bv"/>
                                 </constraints>
                                 <state key="normal" title="Start Listening"/>
                                 <connections>
@@ -189,41 +183,41 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CnL-gY-vYN">
-                                <rect key="frame" x="437" y="38" width="35" height="30"/>
+                                <rect key="frame" x="29" y="87" width="98" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="bS8-hk-p4C"/>
-                                    <constraint firstAttribute="width" constant="35" id="s0b-A9-mUI"/>
+                                    <constraint firstAttribute="width" constant="98" id="9zR-GX-SEK"/>
+                                    <constraint firstAttribute="height" constant="30" id="Zf0-yO-a8d"/>
                                 </constraints>
-                                <state key="normal" title="Scan"/>
+                                <state key="normal" title="Scan QR code"/>
                                 <connections>
                                     <action selector="showScanQRController:" destination="deL-jG-804" eventType="touchUpInside" id="WbG-VO-fSm"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zO0-lH-7QU" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="29" y="88" width="170" height="30"/>
+                                <rect key="frame" x="29" y="125" width="120" height="20"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="69o-Vz-TWl"/>
-                                    <constraint firstAttribute="width" constant="170" id="cRS-kf-bso"/>
+                                    <constraint firstAttribute="height" constant="20" id="CCo-vt-WAL"/>
+                                    <constraint firstAttribute="width" constant="120" id="scr-50-etw"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YrZ-h0-nOR" firstAttribute="top" secondItem="zO0-lH-7QU" secondAttribute="bottom" constant="20" id="1dU-sE-Ooy"/>
-                            <constraint firstItem="ifs-Or-wjl" firstAttribute="leading" secondItem="CLk-94-ZMU" secondAttribute="leading" constant="29" id="3EH-Yo-gcx"/>
-                            <constraint firstItem="zO0-lH-7QU" firstAttribute="top" secondItem="ifs-Or-wjl" secondAttribute="bottom" constant="19" id="6nM-GE-r0z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IT0-7Z-aRe" secondAttribute="trailing" constant="14" id="Bn7-ut-Wtr"/>
-                            <constraint firstAttribute="trailing" secondItem="YrZ-h0-nOR" secondAttribute="trailing" constant="28" id="LQw-5M-a1o"/>
-                            <constraint firstItem="CnL-gY-vYN" firstAttribute="top" secondItem="Wgs-gQ-Zce" secondAttribute="bottom" constant="18" id="Xjg-XM-NGn"/>
-                            <constraint firstItem="CnL-gY-vYN" firstAttribute="leading" secondItem="ifs-Or-wjl" secondAttribute="trailing" constant="11" id="ac5-JV-VhN"/>
-                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Pak-2R-NYX" secondAttribute="trailing" constant="18" id="ayN-bV-JiS"/>
-                            <constraint firstItem="zO0-lH-7QU" firstAttribute="leading" secondItem="CLk-94-ZMU" secondAttribute="leading" constant="29" id="d5X-1W-CZO"/>
-                            <constraint firstItem="Pak-2R-NYX" firstAttribute="top" secondItem="Wgs-gQ-Zce" secondAttribute="bottom" constant="18" id="fFh-K0-Qn6"/>
-                            <constraint firstItem="ifs-Or-wjl" firstAttribute="top" secondItem="Wgs-gQ-Zce" secondAttribute="bottom" constant="19" id="fZd-oQ-bG7"/>
-                            <constraint firstItem="YrZ-h0-nOR" firstAttribute="leading" secondItem="CLk-94-ZMU" secondAttribute="leading" constant="29" id="oQq-Lb-5rF"/>
-                            <constraint firstItem="Pak-2R-NYX" firstAttribute="leading" secondItem="CnL-gY-vYN" secondAttribute="trailing" constant="5" id="wMJ-Yo-J27"/>
-                            <constraint firstItem="IT0-7Z-aRe" firstAttribute="top" secondItem="YrZ-h0-nOR" secondAttribute="bottom" constant="15" id="xV4-66-9kx"/>
+                            <constraint firstItem="Pak-2R-NYX" firstAttribute="baseline" secondItem="CnL-gY-vYN" secondAttribute="baseline" id="BE7-yu-Kwn"/>
+                            <constraint firstItem="zO0-lH-7QU" firstAttribute="leading" secondItem="CLk-94-ZMU" secondAttribute="leading" constant="29" id="F4k-Oo-5O3"/>
+                            <constraint firstAttribute="trailing" secondItem="YrZ-h0-nOR" secondAttribute="trailing" constant="20" id="F8Y-Ad-KTG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pak-2R-NYX" secondAttribute="trailing" constant="10" id="GCt-A8-gjn"/>
+                            <constraint firstItem="ifs-Or-wjl" firstAttribute="top" secondItem="Wgs-gQ-Zce" secondAttribute="bottom" constant="19" id="GKF-cD-gC9"/>
+                            <constraint firstItem="ifs-Or-wjl" firstAttribute="leading" secondItem="CnL-gY-vYN" secondAttribute="leading" id="LdX-bz-hdj"/>
+                            <constraint firstItem="CnL-gY-vYN" firstAttribute="leading" secondItem="CLk-94-ZMU" secondAttribute="leading" constant="29" id="T9J-rj-GkU"/>
+                            <constraint firstItem="ifs-Or-wjl" firstAttribute="trailing" secondItem="IT0-7Z-aRe" secondAttribute="trailing" id="Woi-1O-rSt"/>
+                            <constraint firstAttribute="trailing" secondItem="IT0-7Z-aRe" secondAttribute="trailing" constant="34" id="ZMD-Rz-9V9"/>
+                            <constraint firstItem="IT0-7Z-aRe" firstAttribute="top" secondItem="YrZ-h0-nOR" secondAttribute="bottom" constant="34" id="iAo-Xo-ieI"/>
+                            <constraint firstItem="YrZ-h0-nOR" firstAttribute="leading" secondItem="CLk-94-ZMU" secondAttribute="leading" constant="29" id="jnq-Zw-4Sz"/>
+                            <constraint firstItem="zO0-lH-7QU" firstAttribute="top" secondItem="CnL-gY-vYN" secondAttribute="bottom" constant="8" id="pFk-bR-A33"/>
+                            <constraint firstItem="CnL-gY-vYN" firstAttribute="top" secondItem="ifs-Or-wjl" secondAttribute="bottom" constant="18" id="rxM-kA-MNt"/>
+                            <constraint firstItem="YrZ-h0-nOR" firstAttribute="top" secondItem="zO0-lH-7QU" secondAttribute="bottom" constant="22" id="uQ4-yS-6s8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -316,6 +310,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gTr-ku-gj1"/>
+        <segue reference="M9K-9t-WVF"/>
     </inferredMetricsTieBreakers>
 </document>

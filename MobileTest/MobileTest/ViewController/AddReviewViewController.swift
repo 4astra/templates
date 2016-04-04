@@ -19,7 +19,6 @@ class AddReviewViewController: UIViewController,
     
     @IBOutlet weak var ibProductID: UITextField!
     @IBOutlet weak var ibComment: UITextField!
-//    @IBOutlet weak var ibRating: UITextField!
     @IBOutlet weak var ibSaveButton: UIButton!
     @IBOutlet weak var ibListeningButton: UIButton!
     @IBOutlet weak var cosmosView: CosmosView!
@@ -36,6 +35,9 @@ class AddReviewViewController: UIViewController,
         self.title = "Add Review"
         self.isListening = false
         self.recognizeVoice.delegate = self
+        
+        self.ibProductID.addTarget(self, action: "valueTextChange:", forControlEvents: UIControlEvents.EditingChanged)
+        
         enableControls(false)
         //Cosmos Rating View
         self.cosmosView.settings.fillMode = .Full
@@ -57,6 +59,22 @@ class AddReviewViewController: UIViewController,
         if (self.product != nil) {
             ibProductID.text = self.product?.objectId
             enableControls(true)
+        }
+    }
+    
+    func valueTextChange(textField: UITextField) {
+        print(textField.text)
+        var words = textField.text
+        words = words?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        if words != nil {
+            let predicate = NSPredicate(format: "SELF.objectId == %@", words!)
+            let result = self.productArray.filteredArrayUsingPredicate(predicate) as NSArray
+            
+            if (result.count > 0) {
+                enableControls(true)
+            }else {
+                enableControls(false)
+            }
         }
     }
     
