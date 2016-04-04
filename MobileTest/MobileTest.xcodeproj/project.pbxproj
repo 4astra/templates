@@ -33,6 +33,9 @@
 		7778F0F01CAD2F5D007AA755 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7778F0EF1CAD2F5D007AA755 /* User.swift */; };
 		7778F0F21CAD3FE8007AA755 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7778F0F11CAD3FE8007AA755 /* AddReviewViewController.swift */; };
 		77864C8D1CB0176100279FB6 /* UIToolbar+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 77864C8C1CB0176100279FB6 /* UIToolbar+Utils.m */; };
+		77A1F1481CB2346E0037579D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 77A1F1471CB2346E0037579D /* libsqlite3.0.tbd */; };
+		77A1F14A1CB23B0E0037579D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A1F1491CB23B0E0037579D /* Comment.swift */; };
+		77A1F14C1CB23E690037579D /* NSUserDefaults+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A1F14B1CB23E690037579D /* NSUserDefaults+Utils.swift */; };
 		77A25DD81CAC1B3900BDCF9A /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A25DD71CAC1B3900BDCF9A /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,9 @@
 		7778F0F11CAD3FE8007AA755 /* AddReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		77864C8B1CB0176100279FB6 /* UIToolbar+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+Utils.h"; sourceTree = "<group>"; };
 		77864C8C1CB0176100279FB6 /* UIToolbar+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+Utils.m"; sourceTree = "<group>"; };
+		77A1F1471CB2346E0037579D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		77A1F1491CB23B0E0037579D /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		77A1F14B1CB23E690037579D /* NSUserDefaults+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserDefaults+Utils.swift"; sourceTree = "<group>"; };
 		77A25DD71CAC1B3900BDCF9A /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		9973AD5BA9E4F6633A1FDC15 /* Pods_MobileTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobileTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE14EA815EB091D61E0DCFA5 /* Pods-MobileTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobileTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobileTest/Pods-MobileTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A1F1481CB2346E0037579D /* libsqlite3.0.tbd in Frameworks */,
 				77772C5B1CAEF4150067536A /* Slt.framework in Frameworks */,
 				101A09B2FD2AAF736D79E4EC /* Pods_MobileTest.framework in Frameworks */,
 				77772C5A1CAEF4150067536A /* OpenEars.framework in Frameworks */,
@@ -91,6 +98,7 @@
 		2E317951ED84FB4E456C6B70 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				77A1F1471CB2346E0037579D /* libsqlite3.0.tbd */,
 				7764D2951CAEC7B600C9B7AB /* AVFoundation.framework */,
 				7764D2931CAEC32E00C9B7AB /* CoreGraphics.framework */,
 				9973AD5BA9E4F6633A1FDC15 /* Pods_MobileTest.framework */,
@@ -161,6 +169,7 @@
 			children = (
 				77864C8B1CB0176100279FB6 /* UIToolbar+Utils.h */,
 				77864C8C1CB0176100279FB6 /* UIToolbar+Utils.m */,
+				77A1F14B1CB23E690037579D /* NSUserDefaults+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -237,6 +246,7 @@
 				7778F0DF1CACD259007AA755 /* Product.swift */,
 				7778F0E71CAD088E007AA755 /* Review.swift */,
 				7778F0EF1CAD2F5D007AA755 /* User.swift */,
+				77A1F1491CB23B0E0037579D /* Comment.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -379,6 +389,7 @@
 				77864C8D1CB0176100279FB6 /* UIToolbar+Utils.m in Sources */,
 				7778F0ED1CAD22AD007AA755 /* DetailProductTableViewCell.swift in Sources */,
 				7751B8C91CABF30B003874A3 /* Brand.swift in Sources */,
+				77A1F14C1CB23E690037579D /* NSUserDefaults+Utils.swift in Sources */,
 				7778F0F01CAD2F5D007AA755 /* User.swift in Sources */,
 				773FD7321CAD67E1006B1EBC /* ReviewBusinessController.swift in Sources */,
 				7778F0F21CAD3FE8007AA755 /* AddReviewViewController.swift in Sources */,
@@ -390,6 +401,7 @@
 				77772C601CAF052D0067536A /* CustomRecognizeController.swift in Sources */,
 				7778F0E51CAD016F007AA755 /* ProductTableViewCell.swift in Sources */,
 				7764D2981CAED06C00C9B7AB /* CustomQRCodeReaderController.swift in Sources */,
+				77A1F14A1CB23B0E0037579D /* Comment.swift in Sources */,
 				7778F0EA1CAD1770007AA755 /* DetailProductViewController.swift in Sources */,
 				77511E141CABCF4600880935 /* AppDelegate.swift in Sources */,
 				773FD7301CAD6498006B1EBC /* ProductBusinessController.swift in Sources */,
@@ -508,6 +520,7 @@
 			baseConfigurationReference = FE14EA815EB091D61E0DCFA5 /* Pods-MobileTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -517,33 +530,7 @@
 				INFOPLIST_FILE = MobileTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx/arm64",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx/armv7",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx/armv7s",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx/i386",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx/x86_64",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase/arm64",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase/armv7",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase/armv7s",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase/i386",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase/x86_64",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx/arm64",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx/armv7",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx/armv7s",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx/i386",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx/x86_64",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase/arm64",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase/armv7",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase/armv7s",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase/i386",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase/x86_64",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.greenline.MobileTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "97980c1f-af1a-4aa2-9684-e8efc0f499e4";
@@ -557,6 +544,7 @@
 			baseConfigurationReference = 19B38ED919BE6CBCF1A07CA0 /* Pods-MobileTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -566,33 +554,7 @@
 				INFOPLIST_FILE = MobileTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx/arm64",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx/armv7",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx/armv7s",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx/i386",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/pocketsphinx/x86_64",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase/arm64",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase/armv7",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase/armv7s",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase/i386",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase",
-					"$(PROJECT_DIR)/MobileTest/Library/Sphinx/lib/sphinxbase/x86_64",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx/arm64",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx/armv7",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx/armv7s",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx/i386",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/pocketsphinx/x86_64",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase/arm64",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase/armv7",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase/armv7s",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase/i386",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase",
-					"$(PROJECT_DIR)/MobileTest/Framework/TLSphinx/Sphinx/lib/sphinxbase/x86_64",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.greenline.MobileTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "97980c1f-af1a-4aa2-9684-e8efc0f499e4";

@@ -36,8 +36,6 @@ class DetailProductTableViewCell: UITableViewCell {
                 let user = result.lastObject as! User
                 ibUsername.text = user.userName
             }
-
-//            print(result)
         }
     }
     

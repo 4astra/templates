@@ -62,6 +62,18 @@ class DetailProductViewController: UIViewController,
         self.ibProductName.text = product.productName!
         self.ibBrandName.text = brandName
         self.ibDescription.text = product.desc
+        
+        //var data = NSUserDefaults.arrComment(product.objectId!)? as NSArray
+        
+        
+        let arrayComment = NSUserDefaults.arrComment(product.objectId!)! as NSArray
+        let temp = NSMutableArray(array: self.reviewArray!)
+        if arrayComment.count > 0 {
+            temp.addObjectsFromArray(arrayComment as [AnyObject])
+            self.reviewArray = NSArray(array: temp);
+        }
+        
+        
         let predicate = NSPredicate(format: "SELF.product.objectId == %@", product.objectId!)
         self.reviewFilterArray = NSMutableArray(array: self.reviewArray!.filteredArrayUsingPredicate(predicate))
         dispatch_async(dispatch_get_main_queue()) { () -> Void in

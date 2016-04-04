@@ -1,5 +1,10 @@
 .vagrant/
+
 Pods/*
+
+MobileTest/Pods/*
+
+MobileTest.xcworkspace/*
 
 .DS_Store
 ._.DS_Store

@@ -26,6 +26,7 @@ class AddReviewViewController: UIViewController,
     var product: Product?
     
     var productArray = NSMutableArray()
+    var commentArray = NSMutableArray()
     
     let recognizeVoice = CustomRecognizeController()
     var isListening: Bool?
@@ -47,6 +48,8 @@ class AddReviewViewController: UIViewController,
         ProductBusinessController.getAllProduct { (productArray) -> Void in
             self.productArray = NSMutableArray(array: productArray)
         }
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        self.commentArray = NSMutableArray(array: userDefault.arrayComment())
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -124,6 +127,14 @@ class AddReviewViewController: UIViewController,
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }else {
+                let userDefault = NSUserDefaults.standardUserDefaults()
+                let aComment = Comment()
+                aComment.objectId = self.ibProductID.text!
+                aComment.comment = self.ibComment.text! + ""
+                aComment.rating = String(self.cosmosView.rating)
+                aComment.userObjectId = "s1k6Vzf9Uk"
+                self.commentArray.addObject(aComment)
+                userDefault.saveArrayComment(self.commentArray)
                 self.navigationController?.popToRootViewControllerAnimated(true)
             }
         }
