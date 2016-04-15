@@ -83,7 +83,7 @@
                                         </connections>
                                     </pickerView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="3Ub-il-wev"/>
                                     <constraint firstItem="9es-DR-tuw" firstAttribute="top" secondItem="ufA-Yf-6gR" secondAttribute="bottom" id="9E9-Dc-jsw"/>

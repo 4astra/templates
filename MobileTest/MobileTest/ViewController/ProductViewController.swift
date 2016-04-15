@@ -44,12 +44,22 @@ class ProductViewController: UIViewController,
         self.ibProductTable.tableFooterView = UIView()
         self.ibProductTable.tableHeaderView = UIView()
         self.ibSearchBar.inputAccessoryView = UIToolbar.keyboardToolbar(self)
+        
+        let groupT: dispatch_group_t = dispatch_group_create()
+        dispatch_group_enter(groupT)
         //get all brand
-        allBrand()
+        allBrand(groupT)
+        dispatch_group_enter(groupT)
         //get all product
-        allProduct()
+        allProduct(groupT)
+        dispatch_group_enter(groupT)
         //get all review
-        allReview()
+        allReview(groupT)
+        dispatch_group_notify(groupT, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.ibBrandPickerView.reloadAllComponents()
+            });
+        }
     }
     
     func initItemsOnNavigationBar() {
@@ -65,24 +75,24 @@ class ProductViewController: UIViewController,
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button);
     }
     
-    func allBrand() {
+    func allBrand(groupT: dispatch_group_t) {
         BrandBusinessController.getAllBrand { (brandArray) -> Void in
             self.brandArray = NSMutableArray(array: brandArray)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.ibBrandPickerView.reloadAllComponents()
-            });
+            dispatch_group_leave(groupT)
         }
     }
     
-    func allProduct() {
+    func allProduct(groupT: dispatch_group_t) {
         ProductBusinessController.getAllProduct { (productArray) -> Void in
             self.productArray = NSMutableArray(array: productArray)
+            dispatch_group_leave(groupT)
         }
     }
     
-    func allReview() {
+    func allReview(groupT: dispatch_group_t) {
         ReviewBusinessController.getAllReview { (reviewArray) -> Void in
             self.reviewArray = NSMutableArray(array: reviewArray)
+            dispatch_group_leave(groupT)
         }
     }
     
